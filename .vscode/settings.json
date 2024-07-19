@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/6cec2d5b-48ca-4a2b-89a5-067d5b3b369e/resourceGroups/appsvc_linux_centralus_basic/providers/Microsoft.Web/sites/RT-app",
+    "appService.deploySubpath": "build"
+}

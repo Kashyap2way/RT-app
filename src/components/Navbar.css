@@ -1,0 +1,27 @@
+.navbar {
+display: flex;
+justify-content: space-around;
+align-items: center;
+position: fixed;
+bottom: 0;
+width: 100%;
+background: linear-gradient(to right, #0a2a43, #1c4966); /* Dark blue gradient */
+padding: 0.5rem 0;
+color: white;
+}
+
+.navbar-icon {
+display: flex;
+flex-direction: column;
+align-items: center;
+text-decoration: none;
+color: white;
+}
+
+.navbar-icon span {
+font-size: 0.75rem;
+}
+
+.navbar-icon svg {
+font-size: 1.5rem;
+}

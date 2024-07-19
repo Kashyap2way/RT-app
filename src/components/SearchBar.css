@@ -1,0 +1,30 @@
+.search-bar {
+position: fixed;
+top: 9rem;
+left: 46%;
+transform: translateX(-50%);
+width: 80%;
+max-width: 400px;
+}
+
+.search-bar input {
+width: 100%;
+padding: 0.75rem 1rem;
+border: none;
+border-radius: 25px; /* More rounded edges */
+background: #ffffff; /* Light background color */
+color: #333; /* Dark text color */
+font-size: 1rem;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+outline: none;
+transition: all 0.3s ease;
+}
+
+.search-bar input::placeholder {
+color: #999; /* Placeholder color */
+}
+
+.search-bar input:focus {
+background: #f1f1f1; /* Slightly different background on focus */
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on focus */
+}
