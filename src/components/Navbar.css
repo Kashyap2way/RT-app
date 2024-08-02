@@ -1,27 +1,24 @@
 .navbar {
-display: flex;
-justify-content: space-around;
-align-items: center;
-position: fixed;
-bottom: 0;
-width: 100%;
-background: linear-gradient(to right, #0a2a43, #1c4966); /* Dark blue gradient */
-padding: 0.5rem 0;
-color: white;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  background-color: #1a1a2e;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
 }
 
-.navbar-icon {
-display: flex;
-flex-direction: column;
-align-items: center;
-text-decoration: none;
-color: white;
+.nav-item {
+  color: white;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.9rem;
 }
 
-.navbar-icon span {
-font-size: 0.75rem;
-}
-
-.navbar-icon svg {
-font-size: 1.5rem;
+.nav-item i {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
 }

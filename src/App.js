@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import SearchBar from './components/SearchBar';
 import Navbar from './components/Navbar';
 import Logo from './components/RTLogo';
-import SearchBar from './components/SearchBar';
+import RidePage from './components/RidePage';
 import './App.css';
 
 const App = () => {
+  const [currentPage, setCurrentPage] = useState('home');
+
   return (
-    <div className="App">
-      <Logo />
-      <SearchBar />
-      <div className="content">
-        {/* Add any additional content here */}
-      </div>
-      <Navbar />
+    <div className="app">
+      {currentPage === 'home' && (
+        <header className="header">
+          <Logo />
+          <SearchBar setCurrentPage={setCurrentPage} />
+        </header>
+      )}
+      {currentPage === 'ride' && <RidePage />}
+      <Navbar setCurrentPage={setCurrentPage} />
     </div>
   );
 };
