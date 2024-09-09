@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import './SearchBar.css';
 
 const staticSuggestions = [
-  "Place A",
-  "Place B",
-  "Place C",
-  "Place D",
-  "Place E",
+  "Longs",
+  "Tunnel",
+  "Stairway",
+  "Gecko",
+  "Terrorist",
 ];
 
 const SearchBar = ({ setCurrentPage }) => {
