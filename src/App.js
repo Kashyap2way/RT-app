@@ -8,7 +8,7 @@ import './App.css';
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
-  const [isScrollLocked, setIsScrollLocked] = useState(true);
+  const [isScrollLocked] = useState(true);
 
   React.useEffect(() => {
     if (isScrollLocked) {
