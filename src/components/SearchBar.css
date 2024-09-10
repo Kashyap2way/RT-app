@@ -5,6 +5,7 @@
   transform: translateX(-55%);
   width: 80%;
   max-width: 400px;
+  z-index: 12;
 }
 
 .search-bar input {
@@ -39,7 +40,7 @@
   border-radius: 0 0 25px 25px;
   max-height: 200px;
   overflow-y: auto;
-  z-index: 1000;
+  z-index: 11;
 }
 
 .suggestion-item {
@@ -67,6 +68,7 @@
   transition: max-height 0.5s ease, opacity 0.5s ease;
   max-height: 60px;
   opacity: 1;
+  z-index: 13;
 }
 
 .pickup-bar input {
@@ -121,6 +123,7 @@
   transition: background 0.3s ease, transform 0.3s ease;
   color: #fff;
   font-size: 1.2rem;
+  z-index: 13;
 }
 
 .ride-button:hover {
