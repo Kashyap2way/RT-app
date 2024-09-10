@@ -19,13 +19,13 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 20% 20%, rgba(12, 13, 40, 0.8), transparent 50%),
-              radial-gradient(circle at 80% 80%, rgba(23, 12, 37, 0.6), transparent 50%),
-              radial-gradient(circle at 50% 50%, rgba(17, 12, 58, 0.4), transparent 60%);
+  background: radial-gradient(circle at 20% 20%, rgba(19, 20, 60, 0.8), transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(45, 27, 69, 0.6), transparent 50%),
+              radial-gradient(circle at 50% 50%, rgba(32, 26, 78, 0.4), transparent 60%);
   background-blend-mode: multiply;
   background-size: 400% 400%; /* Make the gradient large enough to animate smoothly */
   z-index: 0; /* Ensure the background is behind content */
-  animation: gradientAnimation 10s ease infinite; /* Apply the animation */
+  animation: gradientAnimation 5s ease infinite; /* Apply the animation */
 }
 
 /* Define the gradient animation */
