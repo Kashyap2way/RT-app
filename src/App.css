@@ -1,4 +1,6 @@
+/* Add this to your App.css */
 .app {
+  position: relative; /* Ensure the gradient overlay is positioned correctly */
   background: linear-gradient(130deg, #181c1f, #000000);
   min-height: 100vh;
   display: flex;
@@ -6,6 +8,44 @@
   align-items: center;
   padding: 20px;
   color: white;
+  overflow: hidden; /* Ensure no scrollbars appear */
+}
+
+/* Create the moving gradient overlay */
+.app::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 20%, rgba(12, 13, 40, 0.8), transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(23, 12, 37, 0.6), transparent 50%),
+              radial-gradient(circle at 50% 50%, rgba(17, 12, 58, 0.4), transparent 60%);
+  background-blend-mode: multiply;
+  background-size: 400% 400%; /* Make the gradient large enough to animate smoothly */
+  z-index: 0; /* Ensure the background is behind content */
+  animation: gradientAnimation 10s ease infinite; /* Apply the animation */
+}
+
+/* Define the gradient animation */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+/* Add this class to body or a container to lock scrolling */
+.lock-scroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
 }
 
 .header {
@@ -13,4 +53,3 @@
   flex-direction: column;
   align-items: center;
 }
-

@@ -1,11 +1,10 @@
 .logo {
 position: fixed;
-top: 1rem;
-left: 50%;
-transform: translateX(-50%);
+top: 0%;
+left: middle;
 }
 
 .logo img {
-height: 150px;
+height: 120px;
 width: auto;
 }

@@ -53,4 +53,12 @@
 .nextSlide .slide-image,
 .prevSlide .slide-image {
   transform: scale(0.5); /* Scale down for blurred images */
+  
+}
+
+/* Add this class to body or a container to lock scrolling */
+.lock-scroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
 }
