@@ -1,13 +1,17 @@
 import React from 'react';
 import './RidePage.css';
 
-const RidePage = () => {
+const Ride = () => {
   return (
-    <div className="ride-page">
-      <h1>Ride Page</h1>
-      {/* Add your RidePage content here */}
+    <div className="ride-container">
+      <div className="loading-box">
+        <h1>Car Arriving Shortly...</h1>
+        <div className="progress-bar">
+          <div className="progress-fill"></div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default RidePage;
+export default Ride;
