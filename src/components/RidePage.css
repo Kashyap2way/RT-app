@@ -30,7 +30,6 @@ h1 {
   background-color: #333;
   border-radius: 5px;
   overflow: hidden;
-  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7);
   border: 1px solid #fff;
 }
 
@@ -40,7 +39,6 @@ h1 {
   background-color: #ffffff;
   border-radius: 5px;
   animation: loading 30s linear forwards;
-  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7);
 }
 
 @keyframes loading {
@@ -75,7 +73,7 @@ h1 {
 .ac-icon {
   font-size: 60px; /* 1.2 times the original size */
   cursor: pointer;
-  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .ac-icon:hover {
@@ -98,4 +96,56 @@ h1 {
   transform: rotate(-90deg);
   cursor: pointer;
   opacity: 0; /* Ensure slider is visible */
+}
+
+/* Bulb Icon & Color Picker Styling */
+.bulb-container {
+  position: absolute;
+  top: 33.3%; /* Center vertically */
+  left: 72%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust for center alignment */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bulb-background {
+  width: 150px; /* Size of the rounded square */
+  height: 150px;
+  background-color: rgba(0, 0, 0, 0.33); /* Background color behind the icon */
+  border-radius: 20px; /* Round edges */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bulb-icon {
+  font-size: 60px; /* Same size as AC icon */
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.bulb-icon:hover {
+  transform: scale(1.2);
+}
+
+.color-picker {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.color-swatch {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #000;
 }

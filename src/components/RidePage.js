@@ -1,29 +1,20 @@
 import React, { useState } from 'react';
 import './RidePage.css';
-import { FaSnowflake } from 'react-icons/fa';
+import { FaSnowflake, FaRegLightbulb } from 'react-icons/fa';
+import { MdClose } from 'react-icons/md';
 
-const Ride = () => {
-  const [showDial, setShowDial] = useState(false);
-  const [temperature, setTemperature] = useState(24); // Default temperature
-  const [iconColor, setIconColor] = useState('#ffffff'); // Default icon color
+const RidePage = () => {
+  const [temperature, setTemperature] = useState(null);
+  const [showColorPicker, setShowColorPicker] = useState(false);
+  const [color, setColor] = useState('#ffffff'); // Default color
 
-  const toggleDial = () => {
-    if (showDial) {
-      // Reset color to white when closing the dial
-      setIconColor('#ffffff');
-    } else {
-      // Update color based on temperature when opening the dial
-      setIconColor(`rgb(${Math.floor((temperature - 16) * (255 / 16))}, 0, ${255 - Math.floor((temperature - 16) * (255 / 16))})`);
-    }
-    setShowDial(!showDial);
+  const handleTemperatureChange = (newTemperature) => {
+    setTemperature(newTemperature);
   };
 
-  const handleDialChange = (e) => {
-    const angle = e.target.value;
-    const newTemperature = Math.floor((angle / 360) * (32 - 16) + 16);
-    setTemperature(newTemperature);
-    // Update icon color based on the new temperature
-    setIconColor(`rgb(${Math.floor((newTemperature - 16) * (255 / 16))}, 0, ${255 - Math.floor((newTemperature - 16) * (255 / 16))})`);
+  const handleColorChange = (newColor) => {
+    setColor(newColor);
+    setShowColorPicker(false);
   };
 
   return (
@@ -35,24 +26,41 @@ const Ride = () => {
         </div>
       </div>
 
+      {/* AC Icon and Dial */}
       <div className="ac-container">
         <div className="ac-background">
           <FaSnowflake
             className="ac-icon"
-            style={{ color: iconColor }} // Change color based on temperature or default white
-            onClick={toggleDial}
+            style={{ color: temperature ? color : '#ffffff' }}
+            onClick={() => handleTemperatureChange(temperature === null ? 16 : null)} // Toggle dial visibility
           />
         </div>
-        {showDial && (
+        {temperature !== null && (
           <div className="dial-box">
-            <input
-              type="range"
-              min="0"
-              max="360"
-              className="dial"
-              onChange={handleDialChange}
-              value={(temperature - 16) * (360 / (32 - 16))} // Set default value for the slider
-            />
+            <div className="dial"></div>
+          </div>
+        )}
+      </div>
+
+      {/* Bulb Icon and Color Picker */}
+      <div className="bulb-container">
+        <div className="bulb-background">
+          <FaRegLightbulb
+            className="bulb-icon"
+            style={{ color: color }}
+            onClick={() => setShowColorPicker(!showColorPicker)} // Toggle color picker visibility
+          />
+        </div>
+        {showColorPicker && (
+          <div className="color-picker">
+            {['#B09300', '#D13414', '#CC00F5', '#6118F2', '#000000', '#ffffff'].map((col) => (
+              <div
+                key={col}
+                className="color-swatch"
+                style={{ backgroundColor: col }}
+                onClick={() => handleColorChange(col)}
+              ></div>
+            ))}
           </div>
         )}
       </div>
@@ -60,4 +68,4 @@ const Ride = () => {
   );
 };
 
-export default Ride;
+export default RidePage;
