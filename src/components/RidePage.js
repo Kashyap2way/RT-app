@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './RidePage.css';
-import { FaSnowflake, FaRegLightbulb } from 'react-icons/fa';
-import { MdClose } from 'react-icons/md';
+import { FaSnowflake, FaRegLightbulb, FaPlay, FaStepBackward, FaStepForward } from 'react-icons/fa'; // Import necessary icons
 
 const RidePage = () => {
   const [temperature, setTemperature] = useState(null);
@@ -19,6 +18,7 @@ const RidePage = () => {
 
   return (
     <div className="ride-container">
+      {/* Loading Box */}
       <div className="loading-box">
         <h1>Car Arriving Shortly...</h1>
         <div className="progress-bar">
@@ -63,6 +63,13 @@ const RidePage = () => {
             ))}
           </div>
         )}
+      </div>
+
+      {/* Music Player Box */}
+      <div className="music-player-box">
+        <FaStepBackward className="music-icon" /> {/* Previous icon */}
+        <FaPlay className="music-icon" />          {/* Play icon */}
+        <FaStepForward className="music-icon" />   {/* Next icon */}
       </div>
     </div>
   );

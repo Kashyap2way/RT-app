@@ -53,7 +53,7 @@ h1 {
 /* AC Icon & Dial Styling */
 .ac-container {
   position: absolute;
-  top: 24%;
+  top: 20%;
   left: 7%;
   display: flex;
   align-items: center;
@@ -101,7 +101,7 @@ h1 {
 /* Bulb Icon & Color Picker Styling */
 .bulb-container {
   position: absolute;
-  top: 33.3%; /* Center vertically */
+  top: 29.3%; /* Center vertically */
   left: 72%; /* Center horizontally */
   transform: translate(-50%, -50%); /* Adjust for center alignment */
   display: flex;
@@ -148,4 +148,30 @@ h1 {
   border-radius: 50%;
   cursor: pointer;
   border: 2px solid #000;
+}
+
+/* Music Player Box Styling */
+.music-player-box {
+  width: 100%;
+  height: 200px; /* 80% height of the loading box */
+  background-color: rgba(10, 9, 21, 0.485);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 50%;
+  padding: 20px;
+  z-index: 10;
+}
+
+.music-icon {
+  font-size: 40px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.music-icon:hover {
+  transform: scale(1.2);
+  color: #f0f0f0;
 }
