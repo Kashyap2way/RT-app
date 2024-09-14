@@ -1,3 +1,4 @@
+/* UsernameModal.css */
 .username-modal-overlay {
 position: fixed;
 top: 0;
@@ -12,12 +13,12 @@ z-index: 100;
 }
 
 .username-modal-box {
-background: #1f1f1f;
+background: #333;
 border-radius: 15px;
 padding: 2rem;
-text-align: center;
-box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
 position: relative;
+border: 2px solid transparent; /* Transparent border to show glow effect */
+box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); /* White glow effect around the box */
 }
 
 .username-modal-box p {
@@ -27,18 +28,16 @@ margin-bottom: 1rem;
 }
 
 .username-modal-box input {
-width: 80%;
+color: #fff;
+width: 87%;
 padding: 1rem;
 border-radius: 10px;
 border: none;
 outline: none;
 font-size: 1rem;
-background-color: #333;
-color: #fff;
+background-color: #444;
 }
 
 .username-modal-box input:focus {
-box-shadow: 0 0 15px rgba(255, 255, 255, 1);
+box-shadow: none; /* Remove focus glow effect from input */
 }
-
-
