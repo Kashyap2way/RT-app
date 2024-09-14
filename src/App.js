@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchBar from './components/SearchBar';
 import Navbar from './components/Navbar';
 import Logo from './components/RTLogo';
 import RidePage from './components/RidePage';
 import ImageSlider from './components/ImageSlider';
+import UsernameModal from './components/UsernameModal';
 import './App.css';
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
   const [isScrollLocked] = useState(true);
+  const [username, setUsername] = useState('');
 
   React.useEffect(() => {
     if (isScrollLocked) {
@@ -18,9 +20,15 @@ const App = () => {
     }
   }, [isScrollLocked]);
 
+  const handleSetUsername = (name) => {
+    setUsername(name);
+    setCurrentPage('home');
+  };
+
   return (
     <div className="app">
-      <div className="background"></div> {/* Add the background div */}
+      {!username && <UsernameModal setUsername={handleSetUsername} />}
+      <div className="background"></div>
       {currentPage === 'home' && (
         <header className="header">
           <Logo />
