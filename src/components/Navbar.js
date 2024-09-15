@@ -9,7 +9,7 @@ return (
         <i className="fas fa-home"></i>
         <span>Home</span>
     </div>
-    <div className="nav-item" onClick={() => setCurrentPage('ride')}>
+    <div className="nav-item" onClick={() => setCurrentPage('home')}>
         <i className="fas fa-car"></i>
         <span>Ride</span>
     </div>
