@@ -55,9 +55,31 @@ const SearchBar = ({ setCurrentPage }) => {
     }
   };
 
-  const handleRideClick = () => {
-    setCurrentPage('ride');
+  const handleRideClick = async () => {
+    try {
+      const response = await fetch('https://rtbackend.onrender.com/api/rides', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          pickup: pickupValue,
+          destination: searchValue,
+        }),
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      console.log('Ride saved successfully:', data);
+    } catch (error) {
+      console.error('Error saving ride:', error);
+    }
   };
+
+
 
   return (
     <div className="search-bar-container">
