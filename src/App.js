@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchBar from './components/SearchBar';
 import Navbar from './components/Navbar';
 import Logo from './components/RTLogo';
@@ -10,8 +10,9 @@ import './App.css';
 const App = () => {
   const [currentPage, setCurrentPage] = useState('username'); // Start with username modal
   const [isScrollLocked] = useState(true);
+  const [name, setName] = useState(''); // State to hold the user's name
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isScrollLocked) {
       document.body.classList.add('lock-scroll');
     } else {
@@ -22,17 +23,36 @@ const App = () => {
   return (
     <div className="app">
       <div className="background"></div> {/* Add the background div */}
-      {currentPage === 'username' && <UsernameModal setCurrentPage={setCurrentPage} />}
+      
+      {/* Conditionally render UsernameModal if currentPage is 'username' */}
+      {currentPage === 'username' && (
+        <UsernameModal 
+          setCurrentPage={setCurrentPage} 
+          setName={setName} // Pass setName to save the user's name
+        />
+      )}
+
+      {/* Conditionally render Home page if currentPage is 'home' */}
       {currentPage === 'home' && (
         <>
           <header className="header">
             <Logo />
-            <SearchBar setCurrentPage={setCurrentPage} />
+            <SearchBar 
+              setCurrentPage={setCurrentPage} 
+              name={name} // Pass name as prop
+            />
           </header>
           <ImageSlider />
         </>
       )}
-      {currentPage === 'ride' && <RidePage />}
+
+      {/* Conditionally render RidePage if currentPage is 'ride' */}
+      {currentPage === 'ride' && (
+        <RidePage 
+          name={name} // Pass name to RidePage
+        />
+      )}
+
       <Navbar setCurrentPage={setCurrentPage} />
     </div>
   );
