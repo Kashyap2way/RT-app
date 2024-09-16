@@ -9,7 +9,7 @@ const staticSuggestions = [
   "Terrorist",
 ];
 
-const SearchBar = ({ setCurrentPage, name }) => {  // Add name prop
+const SearchBar = ({ setCurrentPage, name }) => {
   const [searchValue, setSearchValue] = useState("");
   const [pickupValue, setPickupValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -55,26 +55,31 @@ const SearchBar = ({ setCurrentPage, name }) => {  // Add name prop
     }
   };
 
-  const handleRideClick = () => {
-    fetch('https://rtbackend.onrender.com/api/rides', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name,  // Include name in the request body
-        pickupLocation: pickupValue,
-        destinationLocation: searchValue
-      }),
-    })
-    .then(response => response.json())
-    .then(data => {
+  const handleRideClick = async () => {
+    try {
+      const response = await fetch('https://rtbackend.onrender.com/api/rides', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          pickup: pickupValue,
+          destination: searchValue,
+          name: name
+        }),
+      });
+      
+      if (!response.ok) {
+        const errorText = await response.text(); // Get the error text
+        throw new Error(errorText);
+      }
+
+      const data = await response.json(); // Ensure server response is valid JSON
       console.log('Ride saved:', data);
       setCurrentPage('ride');
-    })
-    .catch(error => {
+    } catch (error) {
       console.error('Error saving ride:', error);
-    });
+    }
   };
 
   return (
