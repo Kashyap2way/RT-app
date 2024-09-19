@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import './SearchBar.css';
 
 const staticSuggestions = [
-  "Longs",
-  "Tunnel",
-  "Stairway",
-  "Gecko",
-  "Terrorist",
+  "Longs", "Tunnel", "Stairway", "Mirage", "Nuke", "Dust", "Ancient", "Vertigo", "Inferno",
+  "Cache", "Double Stack", "Winterfell", "King's Landing", "Dragon Stone", "Iron Islands",
+  "Ascent","Haven", "Split", "Bind", "Icebox", "Breeze", "Fracture", "Pearl",
 ];
 
 const SearchBar = ({ setCurrentPage, name }) => {
