@@ -57,6 +57,10 @@ const SearchBar = ({ setCurrentPage, name }) => {
 
   const handleRideClick = async () => {
     try {
+      const currentDate = new Date();
+      const formattedDate = currentDate.toISOString().split('T')[0].replace(/-/g, '/'); // yy/mm/dd format
+      const formattedTime = currentDate.toTimeString().split(' ')[0]; // HH:MM:SS in 24-hour format
+
       const response = await fetch('https://rtbackend.onrender.com/api/rides', {
         method: 'POST',
         headers: {
@@ -65,22 +69,25 @@ const SearchBar = ({ setCurrentPage, name }) => {
         body: JSON.stringify({
           pickup: pickupValue,
           destination: searchValue,
-          name: name
+          name: name,
+          dateTime: `${formattedDate} ${formattedTime}`, // Include date and time
         }),
       });
-      
+
       if (!response.ok) {
-        const errorText = await response.text(); // Get the error text
+        const errorText = await response.text();
         throw new Error(errorText);
       }
 
-      const data = await response.json(); // Ensure server response is valid JSON
+      const data = await response.json();
       console.log('Ride saved:', data);
       setCurrentPage('ride');
     } catch (error) {
       console.error('Error saving ride:', error);
     }
   };
+
+
 
   return (
     <div className="search-bar-container">
