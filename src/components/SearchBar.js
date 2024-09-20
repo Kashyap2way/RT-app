@@ -4,7 +4,9 @@ import './SearchBar.css';
 const staticSuggestions = [
   "Longs", "Tunnel", "Stairway", "Mirage", "Nuke", "Dust", "Ancient", "Vertigo", "Inferno",
   "Cache", "Double Stack", "Winterfell", "King's Landing", "Dragon Stone", "Iron Islands",
-  "Ascent","Haven", "Split", "Bind", "Icebox", "Breeze", "Fracture", "Pearl",
+  "Ascent", "Haven", "Split", "Bind", "Icebox", "Breeze", "Fracture", "Pearl", "Ahmedabad",
+  "Mumbai", "Indore", "Delhi", "Jaipur", "Chennai", "Hyderabad", "Nagpur", "Baroda", "Mysore",
+  "Kolkata", "Ludhiana",
 ];
 
 const SearchBar = ({ setCurrentPage, name }) => {
