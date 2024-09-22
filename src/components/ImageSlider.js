@@ -19,22 +19,25 @@ const ImageSlider = () => {
   }, []);
 
   return (
-    <div className="slider-container">
-      {images.map((image, index) => {
-        // Calculate the position of each image relative to the current index
-        let position = 'nextSlide';
-        if (index === currentIndex) {
-          position = 'activeSlide';
-        } else if (index === (currentIndex - 1 + images.length) % images.length) {
-          position = 'prevSlide';
-        }
+    <div className="slider-wrapper">
+      <h1 className="ride-text">Ride Peacefully...</h1>
+      <div className="slider-container">
+        {images.map((image, index) => {
+          // Calculate the position of each image relative to the current index
+          let position = 'nextSlide';
+          if (index === currentIndex) {
+            position = 'activeSlide';
+          } else if (index === (currentIndex - 1 + images.length) % images.length) {
+            position = 'prevSlide';
+          }
 
-        return (
-          <div className={`slide ${position}`} key={index}>
-            <img src={image} alt={`Slide ${index}`} className="slide-image" />
-          </div>
-        );
-      })}
+          return (
+            <div className={`slide ${position}`} key={index}>
+              <img src={image} alt={`Slide ${index}`} className="slide-image" />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

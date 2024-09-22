@@ -1,64 +1,115 @@
-.slider-container {
+.slider-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: relative;
   width: 100%;
+  margin-top: 50px; /* Adjust top margin to space it out */
+}
+
+/* Container for the slider */
+.slider-container {
+  position: relative;
+  width: 110%;
   max-width: 800px;
-  height: auto; /* 1:0.7 aspect ratio */
-  aspect-ratio: 10 / 7;
-  margin: 60%;
+  height: auto;
+  aspect-ratio: 16 / 9; /* Landscape aspect ratio */
+  margin: 30%; /* Center the slider horizontally */
   overflow: hidden;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
+/* Each slide's container */
 .slide {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%; /* Adjust width of the slide to fit the container */
+  height: 90%; /* Adjust height to maintain aspect ratio */
   opacity: 0;
-  transition: all 1.1s ease;
+  transition: all 0.5s ease;
+  z-index: 1;
 }
 
 .activeSlide {
   opacity: 1;
-  transform: translateX(0);
-  z-index: 6;
+  transform: translate(-50%, -50%) scale(0.8); /* Center image is bigger */
+  z-index: 3;
 }
 
 .nextSlide {
-  transform: translateX(80%);
-  z-index: 5;
-  filter: blur(5px); /* Blur the next image */
+  transform: translate(25%, -50%) scale(0.5); /* Move next image closer on the right */
+  z-index: 2;
+  filter: blur(3px); /* Reduce blur for better visibility */
+  opacity: 0.9; /* Less opacity for better visibility */
 }
 
 .prevSlide {
-  transform: translateX(-80%);
-  z-index: 5;
-  filter: blur(5px); /* Blur the previous image */
+  transform: translate(-125%, -50%) scale(0.5); /* Move previous image closer on the left */
+  z-index: 2;
+  filter: blur(3px); /* Reduce blur for better visibility */
+  opacity: 0.9; /* Less opacity for better visibility */
 }
 
+/* Styling the image itself */
 .slide-image {
   width: 100%;
   height: 100%;
   object-fit: cover; /* Ensures image fills the container while cropping excess */
-  object-position: center; /* Keeps the image centered while cropping */
-  border-radius: 20px; /* Rounded edges for the images */
+  object-position: center; /* Keeps the image centered */
+  border-radius: 10px; /* Rounded edges */
 }
 
 .activeSlide .slide-image {
-  transform: scale(0.8); /* Slight zoom for the active image */
+  transform: scale(1.1); /* Slight zoom on the active image */
 }
 
 .nextSlide .slide-image,
 .prevSlide .slide-image {
-  transform: scale(0.5); /* Scale down for blurred images */
-  
+  transform: scale(0.7); /* Slightly bigger for better visibility */
 }
 
-/* Add this class to body or a container to lock scrolling */
+/* Adjust for mobile view to make the side images closer */
+@media (max-width: 768px) {
+  .nextSlide {
+    transform: translate(15%, -50%) scale(0.9); /* Move next image closer on smaller screens */
+  }
+
+  .prevSlide {
+    transform: translate(-115%, -50%) scale(0.9); /* Move previous image closer on smaller screens */
+  }
+}
+
+/* Lock scrolling */
 .lock-scroll {
   overflow: hidden;
   position: fixed;
   width: 100%;
+}
+
+/* Styling the text */
+.ride-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-style: italic;
+  color: white;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.6);
+  margin-bottom: 20px; /* Add space between text and slider */
+  animation: glowing 1.5s infinite alternate; /* Glowing effect */
+  text-align: center;
+  transform: translateY(450%);
+}
+
+/* Glowing effect animation */
+@keyframes glowing {
+  from {
+    text-shadow: 0 0 0px rgba(255, 255, 255, 0.5), 0 0 7px rgba(255, 255, 255, 0.4);
+  }
+  to {
+    text-shadow: 0 0 7px rgba(255, 255, 255, 1), 0 0 0px rgba(255, 255, 255, 0.8);
+  }
 }
