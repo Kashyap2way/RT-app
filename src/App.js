@@ -5,6 +5,7 @@ import Logo from './components/RTLogo';
 import RidePage from './components/RidePage';
 import ImageSlider from './components/ImageSlider';
 import UsernameModal from './components/UsernameModal';
+import RideHistory from './components/RideHistory'; // Import RideHistory component
 import './App.css';
 
 const App = () => {
@@ -43,6 +44,7 @@ const App = () => {
             />
           </header>
           <ImageSlider />
+          <RideHistory name={name} /> {/* Render RideHistory and pass user's name */}
         </>
       )}
 
