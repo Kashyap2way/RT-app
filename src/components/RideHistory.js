@@ -8,7 +8,7 @@ const [loading, setLoading] = useState(true);
 useEffect(() => {
     const fetchRideHistory = async () => {
     try {
-        const response = await fetch(`https://your-backend-url.com/api/ridehistory/${name}`);
+        const response = await fetch(`https://backend2-aurb.onrender.com/api/ridehistory/${name}`);
         const data = await response.json();
         setHistory(data);
         setLoading(false);
@@ -32,9 +32,9 @@ return (
         <ul className="ride-history-list">
         {history.map((ride, index) => (
             <li key={index} className="ride-history-item">
-            <p><strong>Date:</strong> {new Date(ride.date).toLocaleDateString()}</p>
-            <p><strong>Distance:</strong> {ride.distance} km</p>
-            <p><strong>Duration:</strong> {ride.duration} min</p>
+            <p><strong>Pickup:</strong> {ride.pickup}</p>
+            <p><strong>Destination:</strong> {ride.destination}</p>
+            <p><strong>Date & Time:</strong> {ride.dateTime}</p>
             </li>
         ))}
         </ul>
