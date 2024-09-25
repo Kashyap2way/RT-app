@@ -5,7 +5,8 @@ import Logo from './components/RTLogo';
 import RidePage from './components/RidePage';
 import ImageSlider from './components/ImageSlider';
 import UsernameModal from './components/UsernameModal';
-import RideHistory from './components/RideHistory'; // Import RideHistory component
+import RideHistory from './components/RideHistory';
+import ActivityPage from './components/ActivityPage'; // Import the new ActivityPage
 import './App.css';
 
 const App = () => {
@@ -52,6 +53,13 @@ const App = () => {
       {currentPage === 'ride' && (
         <RidePage 
           name={name} // Pass name to RidePage
+        />
+      )}
+
+      {/* Conditionally render ActivityPage if currentPage is 'activity' */}
+      {currentPage === 'activity' && (
+        <ActivityPage 
+          name={name} // Pass name to ActivityPage
         />
       )}
 
