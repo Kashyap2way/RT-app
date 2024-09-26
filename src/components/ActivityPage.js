@@ -1,59 +1,58 @@
 import React, { useEffect, useState } from 'react';
 import './ActivityPage.css';
 
-const Activity = ({ name }) => {
-const [rideHistory, setRideHistory] = useState([]);
-const [loading, setLoading] = useState(true);
-const [error, setError] = useState(null);
+const ActivityPage = ({ name }) => {
+  const [rideHistory, setRideHistory] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-// Fetch ride history when component mounts
-useEffect(() => {
+  useEffect(() => {
     const fetchRideHistory = async () => {
-    try {
-        const response = await fetch(`https://your-render-url.com/api/ridehistory/${name}`);
+      try {
+        const response = await fetch(`https://backend2-aurb.onrender.com/api/ridehistory/${name}`);
         if (!response.ok) {
-        throw new Error('Failed to fetch ride history');
+          throw new Error('Failed to fetch ride history');
         }
         const data = await response.json();
         setRideHistory(data);
-    } catch (err) {
-        setError(err.message);
-    } finally {
+      } catch (error) {
+        setError(error.message);
+      } finally {
         setLoading(false);
-    }
+      }
     };
 
     if (name) {
-    fetchRideHistory();
+      fetchRideHistory();
     }
-}, [name]);
+  }, [name]);
 
-if (loading) {
-    return <div className="activity-loading">Loading ride history...</div>;
-}
+  if (loading) {
+    return <p>Loading ride history...</p>;
+  }
 
-if (error) {
-    return <div className="activity-error">Error: {error}</div>;
-}
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
 
-if (rideHistory.length === 0) {
-    return <div className="activity-empty">No ride history available for {name}</div>;
-}
+  if (rideHistory.length === 0) {
+    return <p>No rides found for {name}.</p>;
+  }
 
-return (
-    <div className="activity-container">
-    <h2>{name}'s Ride History</h2>
-    <ul className="ride-history-list">
+  return (
+    <div className="activity-page">
+      <h3>{name}'s Ride Activity</h3>
+      <ul>
         {rideHistory.map((ride, index) => (
-        <li key={index} className="ride-history-item">
-            <p><strong>Pickup:</strong> {ride.pickup}</p>
-            <p><strong>Destination:</strong> {ride.destination}</p>
-            <p><strong>Date & Time:</strong> {ride.dateTime}</p>
-        </li>
+          <li key={index}>
+            <p>Pickup: {ride.pickup}</p>
+            <p>Destination: {ride.destination}</p>
+            <p>Date: {ride.dateTime}</p>
+          </li>
         ))}
-    </ul>
+      </ul>
     </div>
-);
+  );
 };
 
-export default Activity;
+export default ActivityPage;
