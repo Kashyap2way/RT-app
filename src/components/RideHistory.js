@@ -1,24 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './RideHistory.css';
 
 const RideHistory = ({ name }) => {
 const [rideHistory, setRideHistory] = useState([]);
-const [loading, setLoading] = useState(true);
-const [error, setError] = useState(null);
 
 useEffect(() => {
     const fetchRideHistory = async () => {
     try {
         const response = await fetch(`https://backend2-aurb.onrender.com/api/ridehistory/${name}`);
-        if (!response.ok) {
-        throw new Error('Failed to fetch ride history');
-        }
         const data = await response.json();
         setRideHistory(data);
     } catch (error) {
-        setError(error.message);
-    } finally {
-        setLoading(false);
+        console.error('Error fetching ride history:', error);
     }
     };
 
@@ -27,30 +20,23 @@ useEffect(() => {
     }
 }, [name]);
 
-if (loading) {
-    return <p>Loading ride history...</p>;
-}
-
-if (error) {
-    return <p>Error: {error}</p>;
-}
-
-if (rideHistory.length === 0) {
-    return <p>No rides found for {name}.</p>;
-}
-
 return (
-    <div className="ride-history">
-    <h3>{name}'s Ride History</h3>
-    <ul>
+    <div className="ride-history-container">
+    <h2 className="ride-history-title">Activity</h2> {/* Title above ride history */}
+
+    {rideHistory.length === 0 ? (
+        <p>No ride history available.</p>
+    ) : (
+        <div className="ride-history-list">
         {rideHistory.map((ride, index) => (
-        <li key={index}>
-            <p>Pickup: {ride.pickup}</p>
-            <p>Destination: {ride.destination}</p>
-            <p>Date: {ride.dateTime}</p>
-        </li>
+            <div key={index} className="ride-history-box">
+            <p><strong>Pickup:</strong> {ride.pickup}</p>
+            <p><strong>Destination:</strong> {ride.destination}</p>
+            <p><strong>Date & Time:</strong> {ride.dateTime}</p>
+            </div>
         ))}
-    </ul>
+        </div>
+    )}
     </div>
 );
 };

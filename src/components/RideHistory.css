@@ -1,15 +1,16 @@
+/* Container for the entire ride history section */
 .ride-history-container {
-background-color: #222;
+background-color: #3135518f;
 padding: 20px;
 border-radius: 10px;
 color: white;
-margin-top: -80px;
 max-width: 800px;
-margin-left: auto;
-margin-right: auto;
+margin: 20px auto; /* Adjusted margin for centering */
+transform: translateY(-5%);
 }
 
-.ride-history-heading {
+/* Title style for "Activity" */
+.ride-history-title {
 font-size: 24px;
 font-weight: bold;
 text-align: center;
@@ -18,22 +19,26 @@ color: #ffffff;
 text-shadow: 0 0 10px #fff, 0 0 20px #00f, 0 0 30px #0ff, 0 0 40px #0ff, 0 0 50px #0ff;
 }
 
+/* Styling the list of ride histories */
 .ride-history-list {
 list-style-type: none;
 padding: 0;
 }
 
-.ride-history-item {
-background-color: #333;
+/* Box for each ride with rounded edges */
+.ride-history-box {
+background-color: #76747484;
 padding: 15px;
-border-radius: 5px;
+border-radius: 15px;
 margin-bottom: 10px;
+opacity: 0.5;
 }
 
-.ride-history-item p {
+/* Text styles inside the ride box */
+.ride-history-box p {
 margin: 5px 0;
 }
 
-.ride-history-item strong {
+.ride-history-box strong {
 color: #0ff;
 }
