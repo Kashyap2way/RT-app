@@ -1,32 +1,26 @@
-.activity-page {
-padding: 20px;
-background-color: #f0f0f0;
-min-height: 100vh;
-}
-
-h2 {
-color: #333;
-text-align: center;
-margin-bottom: 20px;
+.activity-container {
+  padding: 20px;
+  background-color: #f8f8f8;
 }
 
 .ride-history-list {
-list-style-type: none;
-padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
-.ride-item {
-background-color: white;
-margin-bottom: 10px;
-padding: 15px;
-border-radius: 8px;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.ride-history-item {
+  background-color: white;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.ride-item div {
-margin: 5px 0;
+.ride-history-item p {
+  margin: 5px 0;
 }
 
-.ride-item strong {
-color: #333;
+.activity-loading, .activity-error, .activity-empty {
+  text-align: center;
+  margin-top: 20px;
 }
