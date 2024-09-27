@@ -10,13 +10,19 @@ const ActivityPage = ({ name }) => {
     const fetchRideHistory = async () => {
       try {
         const response = await fetch(`https://backend2-aurb.onrender.com/api/ridehistory/${name}`);
+        console.log('API Response:', response); // Log API response status
+
         if (!response.ok) {
           throw new Error('Failed to fetch ride history');
         }
+
         const data = await response.json();
+        console.log('Ride History Data:', data); // Log fetched data
+
         setRideHistory(data);
       } catch (error) {
         setError(error.message);
+        console.error('Error fetching data:', error);
       } finally {
         setLoading(false);
       }
@@ -26,6 +32,7 @@ const ActivityPage = ({ name }) => {
       fetchRideHistory();
     }
   }, [name]);
+
 
   if (loading) {
     return <p>Loading ride history...</p>;
@@ -44,7 +51,7 @@ const ActivityPage = ({ name }) => {
       <h3>{name}'s Ride Activity</h3>
       <ul>
         {rideHistory.map((ride, index) => (
-          <li key={index}>
+          <li className="ride-history-item" key={index}>
             <p>Pickup: {ride.pickup}</p>
             <p>Destination: {ride.destination}</p>
             <p>Date: {ride.dateTime}</p>
@@ -53,6 +60,6 @@ const ActivityPage = ({ name }) => {
       </ul>
     </div>
   );
-};
+}
 
 export default ActivityPage;
