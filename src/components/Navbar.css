@@ -17,9 +17,24 @@
   flex-direction: column;
   align-items: center;
   font-size: 0.9rem;
+  transition: color 0.3s ease;
 }
 
 .nav-item i {
   font-size: 1.5rem;
   margin-bottom: 5px;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav-item.active i {
+  color: white; /* Set the icon color to white */
+  text-shadow: 0 0 20px rgba(255, 173, 67, 0.8); /* Add glow effect */
+}
+
+.nav-item.active span {
+  color: white; /* Ensure the text also turns white when active */
+}
+
+.nav-item span {
+  transition: color 0.3s ease;
 }
