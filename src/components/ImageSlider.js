@@ -4,8 +4,11 @@ import Image1 from './Images/Image1.jpeg';
 import Image2 from './Images/Image2.jpeg';
 import Image3 from './Images/Image3.jpeg';
 import Image4 from './Images/Image4.jpeg';
+import Image5 from './Images/Image5.jpg';
+import Image6 from './Images/Image6.jpg';
+import Image7 from './Images/Image7.jpg';
 
-const images = [Image1, Image2, Image3, Image4];
+const images = [Image1, Image2, Image3, Image4, Image5, Image6, Image7];
 
 const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
